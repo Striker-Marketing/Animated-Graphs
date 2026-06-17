@@ -1,7 +1,7 @@
 const addAnimatedIcon = () => {
   const wrapper = document.querySelector("[animated-graph-wrapper]");
   wrapper.innerHTML = `
-<svg style="display: block; margin: 0 auto; max-width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg" width="746" height="479" fill="none" viewBox="0 0 746 479">
+<svg style="display: block; margin: 0 auto; width: 100%;" xmlns="http://www.w3.org/2000/svg" width="746" height="479" fill="none" viewBox="0 0 746 479">
   <path class="chart-fill" fill="url(#a)" d="M27 283.5c47.16-4 84.509-7.567 154.682-36.5 84.886-35 95.45-43 168.263-83.5C428.041 117 464.636 88 525 58v385H27V283.5Z"/>
   <path class="chart-line" stroke="#FF8D7D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M27.5 307.585C211.287 297.548 456.463 420 523.5 420"/>
   <path class="chart-line" stroke="#2EA795" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M27.5 284c183.879-9.978 436.712-196.066 497-226"/>
