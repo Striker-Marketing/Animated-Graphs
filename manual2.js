@@ -51,6 +51,4 @@ const addSecondGraph = () => {
       l.to(c, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" }, 0 === a ? "-=1.4" : "-=0.2");
     }));
 };
-document.addEventListener("DOMContentLoaded", () => {
-  (gsap.registerPlugin(ScrollTrigger), addSecondGraph());
-});
+addSecondGraph()
