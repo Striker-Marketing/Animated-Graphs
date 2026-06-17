@@ -33,17 +33,20 @@ const addAnimatedIcon4 = () => {
 </svg>
 `;
 
-  const svg = document.querySelector("[animated-graph-wrapper4] svg");
-  const chartLines = gsap.utils.toArray(".chart-line");
+  const svg = wrapper.querySelector("svg");
+  const chartLines = wrapper.querySelectorAll(".chart-line");
+  const chartFill = wrapper.querySelectorAll(".chart-fill");
+  const textLabels = wrapper.querySelectorAll(".text-label");
+  const chartDots = wrapper.querySelectorAll(".chart-dot");
 
-  gsap.set(".chart-fill", { opacity: 0 });
-  gsap.set(".text-label", { opacity: 0, y: 8 });
+  gsap.set(chartFill, { opacity: 0 });
+  gsap.set(textLabels, { opacity: 0, y: 8 });
   chartLines.forEach((line) => {
     const length = line.getTotalLength();
     gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
   });
 
-  document.querySelectorAll(".chart-dot").forEach((dot) => {
+  chartDots.forEach((dot) => {
     const bbox = dot.getBBox();
     gsap.set(dot, {
       svgOrigin: `${bbox.x + bbox.width / 2} ${bbox.y + bbox.height / 2}`,
@@ -60,9 +63,8 @@ const addAnimatedIcon4 = () => {
     },
   });
 
-  const dotPaths = gsap.utils.toArray(".chart-dot");
   const dotGroups = {};
-  dotPaths.forEach((dot) => {
+  chartDots.forEach((dot) => {
     const bbox = dot.getBBox();
     const cx = Math.round(bbox.x + bbox.width / 2);
     if (!dotGroups[cx]) dotGroups[cx] = [];
@@ -72,9 +74,9 @@ const addAnimatedIcon4 = () => {
     .sort((a, b) => Number(a[0]) - Number(b[0]))
     .map(([, group]) => group);
 
-  tl.to(".text-label", { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: "power2.out" })
+  tl.to(textLabels, { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: "power2.out" })
     .to(chartLines, { strokeDashoffset: 0, duration: 2, stagger: 0.15, ease: "power2.inOut" }, "-=0.2")
-    .to(".chart-fill", { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=1.6");
+    .to(chartFill, { opacity: 1, duration: 1.2, ease: "power2.out" }, "-=1.6");
 
   groupedDots.forEach((group, i) => {
     tl.to(
